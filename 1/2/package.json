@@ -1,0 +1,11 @@
+{
+  "name": "1",
+  "packageManager": "yarn@3.2.4",
+  "dependencies": {
+    "typescript": "^4.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.10",
+    "ts-node": "^10.9.1"
+  }
+}
