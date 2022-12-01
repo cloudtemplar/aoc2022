@@ -1,5 +1,5 @@
-const fs = require('fs');
-const readLine = require('readline');
+import fs from 'fs';
+import readLine from 'readline';
 
 async function findMostCalories(filePath: string): Promise<number> {
   let mostCalories = 0;
@@ -34,7 +34,7 @@ async function findMostCalories(filePath: string): Promise<number> {
   return mostCalories;
 }
 
-let mostCalories = findMostCalories('lib/input.txt');
+let mostCalories = findMostCalories('src/1/input.txt');
 mostCalories.then((result) => {
   console.log(result);
 });

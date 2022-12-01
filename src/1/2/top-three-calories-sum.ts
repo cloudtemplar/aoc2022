@@ -1,5 +1,5 @@
-const fs = require('fs');
-const readLine = require('readline');
+import fs from 'fs';
+import readLine from 'readline';
 
 async function topThreeCaloriesSum(filePath: string): Promise<number> {
   let topThreeCaloriesSum = 0;
@@ -39,7 +39,7 @@ function calculateTopThreeCaloriesSum(elfCaloriesList: Array<number>): number {
   return elfCaloriesList.sort().reverse().slice(0, 3).reduce((sum, current) => sum + current);
 }
 
-let mostCalories = topThreeCaloriesSum('lib/input.txt');
+let mostCalories = topThreeCaloriesSum('src/1/input.txt');
 mostCalories.then((result) => {
   console.log(result);
 });
