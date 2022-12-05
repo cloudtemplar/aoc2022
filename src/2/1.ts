@@ -50,7 +50,7 @@ class RPSScoreCounterService {
     return score;
   }
 
-  private rounds(filePath: string) {
+  private rounds(filePath: string): Array<string> {
     const fileContents = fs.readFileSync(filePath, 'utf8');
 
     return fileContents.split(/\r?\n/);
