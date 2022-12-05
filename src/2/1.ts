@@ -57,51 +57,47 @@ class RPSScoreCounterService {
   }
 
   private roundWon(opponentShape: string, yourShape: string): boolean {
-    let result = false;
-
     switch (opponentShape) {
       case 'A':
         if (yourShape === 'Y') {
-          result = true;
+          return true;
         }
         break;
       case 'B':
         if (yourShape === 'Z') {
-          result = true;
+          return true;
         }
         break;
       case 'C':
         if (yourShape === 'X') {
-          result = true;
+          return true;
         }
         break;
     }
 
-    return result;
+    return false;
   }
 
   private roundDrawn(opponentShape: string, yourShape: string): boolean {
-    let result = false;
-
     switch (opponentShape) {
       case 'A':
         if (yourShape === 'X') {
-          result = true;
+          return true;
         }
         break;
       case 'B':
         if (yourShape === 'Y') {
-          result = true;
+          return true;
         }
         break;
       case 'C':
         if (yourShape === 'Z') {
-          result = true;
+          return true;
         }
         break;
     }
 
-    return result;
+    return false;
   }
 
   private shapePoints(yourShape: string): number {
