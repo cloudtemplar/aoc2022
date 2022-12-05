@@ -61,17 +61,17 @@ class RPSScoreCounterService {
 
     switch (opponentShape) {
       case 'A':
-        if (yourShape == 'Y') {
+        if (yourShape === 'Y') {
           result = true;
         }
         break;
       case 'B':
-        if (yourShape == 'Z') {
+        if (yourShape === 'Z') {
           result = true;
         }
         break;
       case 'C':
-        if (yourShape == 'X') {
+        if (yourShape === 'X') {
           result = true;
         }
         break;
@@ -85,17 +85,17 @@ class RPSScoreCounterService {
 
     switch (opponentShape) {
       case 'A':
-        if (yourShape == 'X') {
+        if (yourShape === 'X') {
           result = true;
         }
         break;
       case 'B':
-        if (yourShape == 'Y') {
+        if (yourShape === 'Y') {
           result = true;
         }
         break;
       case 'C':
-        if (yourShape == 'Z') {
+        if (yourShape === 'Z') {
           result = true;
         }
         break;
