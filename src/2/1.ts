@@ -1,18 +1,6 @@
 // https://adventofcode.com/2022/day/2
 
-// A - rock
-// B - paper
-// C - scissors
-
-// X - rock      + 1 point
-// Y - paper     + 2 points
-// Z - scissors  + 3 points
-
-// win           + 6 points
-// draw          + 3 points
-// lose          + 0 points
-
-import fs from 'fs';
+import { readLines } from '../helpers/read-lines'
 
 class RPSScoreCounterService {
   static shapePointsBoard = {
@@ -20,90 +8,84 @@ class RPSScoreCounterService {
     Y: 2,
     Z: 3
   }
-  static winPoints = 6;
-  static drawPoints = 3;
-  static losePoints = 0;
 
-  printScore(filePath: string): void {
-    const score = this.calculateScore(filePath);
+  static winPoints = 6
+  static drawPoints = 3
+  static losePoints = 0
 
-    console.log('Score:', score);
+  printScore (filePath: string): void {
+    const score = this.calculateScore(filePath)
+
+    console.log('Score:', score)
   }
 
-  private calculateScore(filePath: string): number {
-    const rounds = this.rounds(filePath);
+  private calculateScore (filePath: string): number {
+    let score = 0
 
-    let score = 0;
-
+    const rounds = readLines(filePath)
     for (const round of rounds) {
-      const [opponentShape, yourShape] = round.split(' ');
+      const [opponentShape, yourShape] = round.split(' ')
 
       if (this.roundWon(opponentShape, yourShape)) {
-        score += (RPSScoreCounterService.winPoints + this.shapePoints(yourShape));
+        score += (RPSScoreCounterService.winPoints + this.shapePoints(yourShape))
       } else if (this.roundDrawn(opponentShape, yourShape)) {
-        score += (RPSScoreCounterService.drawPoints + this.shapePoints(yourShape));
+        score += (RPSScoreCounterService.drawPoints + this.shapePoints(yourShape))
       } else {
-        score += (RPSScoreCounterService.losePoints + this.shapePoints(yourShape));
+        score += (RPSScoreCounterService.losePoints + this.shapePoints(yourShape))
       }
     }
 
-    return score;
+    return score
   }
 
-  private rounds(filePath: string): Array<string> {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-
-    return fileContents.split(/\r?\n/);
-  }
-
-  private roundWon(opponentShape: string, yourShape: string): boolean {
+  private roundWon (opponentShape: string, yourShape: string): boolean {
     switch (opponentShape) {
       case 'A':
         if (yourShape === 'Y') {
-          return true;
+          return true
         }
-        break;
+        break
       case 'B':
         if (yourShape === 'Z') {
-          return true;
+          return true
         }
-        break;
+        break
       case 'C':
         if (yourShape === 'X') {
-          return true;
+          return true
         }
-        break;
+        break
     }
 
-    return false;
+    return false
   }
 
-  private roundDrawn(opponentShape: string, yourShape: string): boolean {
+  private roundDrawn (opponentShape: string, yourShape: string): boolean {
     switch (opponentShape) {
       case 'A':
         if (yourShape === 'X') {
-          return true;
+          return true
         }
-        break;
+        break
       case 'B':
         if (yourShape === 'Y') {
-          return true;
+          return true
         }
-        break;
+        break
       case 'C':
         if (yourShape === 'Z') {
-          return true;
+          return true
         }
-        break;
+        break
     }
 
-    return false;
+    return false
   }
 
-  private shapePoints(yourShape: string): number {
-    return RPSScoreCounterService.shapePointsBoard[yourShape as keyof typeof RPSScoreCounterService.shapePointsBoard];
+  private shapePoints (yourShape: string): number {
+    return RPSScoreCounterService.shapePointsBoard[yourShape as keyof typeof RPSScoreCounterService.shapePointsBoard]
   }
 }
 
-const caloriesCounterService = new RPSScoreCounterService();
-caloriesCounterService.printScore('src/2/input.txt');
+const caloriesCounterService = new RPSScoreCounterService()
+caloriesCounterService.printScore('src/2/input.txt')
